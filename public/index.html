@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🥔 Portal del empleado 🥔</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <header>
+        <div id="header">
+            <h1>🥔 Portal del empleado de PatataShop 🥔</h1>
+        </div>
+        <nav>
+            <ul class="menu"><a href="/">Inicio</a></ul>
+            <ul class="menu"><a href="/usuarios.html">Usuarios</a></ul>
+            <ul class="menu"><a href="/managers.html">Managers</a></ul>
+        </nav>
+    </header>
+    <main>
+        <div>
+            <p>Bienvenido al portal del empleado de PatataShop. Aquí puedes acceder a tu información laboral y editar
+                los datos que necesites. Como parte del compromiso de PatataShop con todas las personas que lo hacéis posible, tenéis a vuestra
+                disposición una serie de beneficios y ventajas que podéis consultar en este mismo portal.</p>
+            <p>Para cualquier duda o consulta, puedes enviar un mensaje a <strong><a href="#">management@PatataShop.com</a></strong>.
+                También te recordamos que puedes contactar con el equipo de management a través de los canales
+                habituales.</p>
+            <p>Este portal del empleado se encuentra en fase beta, por lo que puedes experimentar algún bug, te animamos
+                a notificárnoslo para que podamos resolverlo y mejorar el portal entre todos</p>
+        </div>
+        <div id="acceso">
+            <h3>Para acceder a tu cuenta personal, introduce usuario y contraseña:</h3>
+            <input type="text" placeholder="Usuario" id="username">
+            <input type="text" placeholder="Contraseña" id="password">
+            <button onclick="accesoUsuario()">Acceder al perfil</button>
+        </div>
+        <div id="feedback"></div>
+    </main>
+    <script src="index.js"></script>
+</body>
+
+</html>

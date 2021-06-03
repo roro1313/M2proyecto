@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🥔 Portal del empleado 🥔</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <header>
+        <div id="header">
+            <h1>🥔 Portal del empleado de PatataShop 🥔</h1>
+        </div>
+        <nav>
+            <ul class="menu"><a href="/">Inicio</a></ul>
+            <ul class="menu"><a href="/usuarios.html">Usuarios</a></ul>
+            <ul class="menu"><a href="/managers.html">Managers</a></ul>
+        </nav>
+    </header>
+    <main>
+        <div>
+            <h1> Zona managers </h1>
+            <p>Estás en la zona de management del portal del empleado de PatataShop. A través de esta página puedes
+                gestionar los perfiles de los empleados:</p>
+            <p>Aquí puedes consultar los perfiles de los empleados, crear nuevos perfiles, editar los perfiles
+                existentes o eliminarlos.</p>
+        </div>
+        <div>
+            <h2>Zona de búsquedas:</h2>
+            <button onclick="mostrarUsuarios()">Mostrar todos los usuarios</button>
+            <div id="feedbackbuscarBoton"></div>
+        </div>
+        <div id="busquedas">
+            <div id="buscarUsuario">
+                <h3>Puedes consultar los perfiles por usuario:</h3>
+                <input type="text" placeholder="Usuario" id="username">
+                <button onclick="buscarUsuario()">Buscar usuario</button>
+                <div id="feedbackbuscarUsuario"></div>
+            </div>
+            <div id="buscarDepartamento">
+                <h3>Puedes consultar los perfiles por departamento:</h3>
+                <input type="text" placeholder="Departamento" id="departamento">
+                <button onclick="buscarDepartamento()">Buscar departamento</button>
+                <div id="feedbackbuscarDepartamento"></div>
+            </div>
+            <div id="buscarDelegacion">
+                <h3>Puedes consultar los perfiles por delegación:</h3>
+                <input type="text" placeholder="Delegación" id="delegacion">
+                <button onclick="buscarDelegacion()">Buscar delegación</button>
+                <div id="feedbackbuscarDelegacion"></div>
+            </div>
+        </div>
+        <div id="resultadosBusqueda"></div>
+        <div id="editar"></div>
+        <div id="borrar"></div>
+    </main>
+    <script src="managers.js"></script>
+</body>
+
+</html>
