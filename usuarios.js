@@ -1,5 +1,7 @@
 const express = require("express");
 const router = express.Router();
+const bcrypt = require("bcrypt");
+const cifrar = require("./cifrar")
 
 router.get("/", function (req, res) {
   req.app.locals.db
@@ -12,49 +14,25 @@ router.get("/", function (req, res) {
     });
 });
 
-router.post("/crear", function (req, res) {
-  req.app.locals.db
-    .collection("personal")
-    .find({ username: req.body.username })
-    .toArray(function (error, data) {
+
+router.put("/login", function (req, res) {
+  req.app.locals.db.collection("personal").find({ username: req.body.username })
+    .toArray(function (error, datos) {
       if (error) {
-        res.send({ error: true, contenido: error });
+        res.send({ sesion: false, mensaje: error });
       } else {
-        if (data.length === 1) {
-          res.send({
-            error: false,
-            mensaje: "El usuario ya existe en la base de datos",
-          });
+        if (datos.length > 0) {
+          if (bcrypt.compareSync(req.body.password, datos[0].password)) {
+            res.send({ sesion: true, mensaje: "Logueado correctamente", respuesta: datos });
+          } else {
+            res.send({ sesion: false, mensaje: "Contraseña incorrecta"});
+          }
         } else {
-          db.collection("personal").insertOne(
-            {
-              nombre: req.body.nombre,
-              apellido: req.body.apellido,
-              puesto: req.body.puesto,
-              departamento: req.body.departamento,
-              delegacion: req.body.delegacion,
-              fechaInicio: req.body.fechaInicio,
-              username: req.body.username,
-              password: req.body.password,
-            },
-            function (error, datos) {
-              error
-                ? res.send({
-                    error: true,
-                    contenido: error,
-                    mensaje: "Error: No se ha podido crear el nuevo usuario",
-                  })
-                : res.send({
-                    error: false,
-                    contenido: datos,
-                    mensaje: `Se ha registrado ${datos.insertedCount} usuario correctamente`,
-                  });
-            }
-          );
+          res.send({ sesion: false, mensaje: "El usuario no existe" });
         }
       }
     });
-});
+}); 
 
 router.put("/editar", function (req, res) {
   req.app.locals.db.collection("personal").updateOne(
@@ -63,11 +41,11 @@ router.put("/editar", function (req, res) {
       $set: {
         nombre: req.body.nombre,
         apellido: req.body.apellido,
-        puesto: req.body.puesto,
-        departamento: req.body.departamento,
         delegacion: req.body.delegacion,
-        fechaInicio: req.body.fechaInicio,
-        password: req.body.password,
+        direccion: req.body.direccion,
+        puesto: req.body.puesto,
+        email: req.body.email,
+        departamento: req.body.departamento,
       },
     },
     function (error, datos) {

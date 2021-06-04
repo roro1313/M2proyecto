@@ -1,7 +1,5 @@
 
-
-
-function registrarCliente() {
+function registrarUsuario() {
     fetch("/clientes/registro", {
       method: "POST",
       headers: {
@@ -26,8 +24,8 @@ function registrarCliente() {
 
 }
 
-function habitaciones() {
-    fetch("/habitaciones")
+/* function cursos() {
+    fetch("/cursos")
       .then((res) => res.json())
       .then(function (datos) {
         if (!datos.error) {
@@ -41,7 +39,7 @@ function habitaciones() {
         }
       });
   }
-  
+   */
 
   function imprimir(info) {
     document.getElementById("feedback").innerHTML = `<h4>${info}</h4>`;

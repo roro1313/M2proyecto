@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const cifrar = require("./cifrar")
 
 router.get("/", function (req, res) {
   req.app.locals.db
@@ -23,11 +24,10 @@ router.post("/username", function (req, res) {
       });
   });
 
-router.put("/departamento", function (req, res) {
-    console.log(req.body)
+router.post("/departamento", function (req, res) {
     req.app.locals.db
       .collection("personal")
-      .find({departamento: "departamento"})
+      .find({departamento: req.body.departamento})
       .toArray(function (error, datos) {
         error
           ? res.send({ error: true, respuesta: error })
@@ -38,7 +38,7 @@ router.put("/departamento", function (req, res) {
   router.post("/delegacion", function (req, res) {
     req.app.locals.db
       .collection("personal")
-      .find(req.body)
+      .find({delegacion: req.body.delegacion})
       .toArray(function (error, datos) {
         error
           ? res.send({ error: true, respuesta: error })
@@ -46,7 +46,7 @@ router.put("/departamento", function (req, res) {
       });
   });
 
-router.post("/crear", function (req, res) {
+router.post("/crear", cifrar, function (req, res) {
   req.app.locals.db
     .collection("personal")
     .find({ username: req.body.username })
@@ -60,27 +60,29 @@ router.post("/crear", function (req, res) {
             mensaje: "El usuario ya existe en la base de datos",
           });
         } else {
-          db.collection("personal").insertOne(
+            req.app.locals.db.collection("personal").insertOne(
             {
-              nombre: req.body.nombre,
-              apellido: req.body.apellido,
-              puesto: req.body.puesto,
-              departamento: req.body.departamento,
-              delegacion: req.body.delegacion,
-              fechaInicio: req.body.fechaInicio,
-              username: req.body.username,
-              password: req.body.password,
+                nombre: req.body.nombre,
+                apellido: req.body.apellido,
+                delegacion: req.body.delegacion,
+                direccion: req.body.direccion,
+                puesto: req.body.puesto,
+                email: req.body.email,
+                departamento: req.body.departamento,
+                foto: req.body.foto,
+                username: req.body.username,
+                password: req.body.password,
             },
             function (error, datos) {
               error
                 ? res.send({
                     error: true,
-                    contenido: error,
+                    respuesta: error,
                     mensaje: "Error: No se ha podido crear el nuevo usuario",
                   })
                 : res.send({
                     error: false,
-                    contenido: datos,
+                    respuesta: datos,
                     mensaje: `Se ha registrado ${datos.insertedCount} usuario correctamente`,
                   });
             }
@@ -97,10 +99,11 @@ router.put("/editar", function (req, res) {
       $set: {
         nombre: req.body.nombre,
         apellido: req.body.apellido,
-        puesto: req.body.puesto,
-        departamento: req.body.departamento,
         delegacion: req.body.delegacion,
-        fechaInicio: req.body.fechaInicio,
+        direccion: req.body.direccion,
+        puesto: req.body.puesto,
+        email: req.body.email,
+        departamento: req.body.departamento,
         password: req.body.password,
       },
     },
@@ -121,21 +124,22 @@ router.delete("/borrar", function (req, res) {
       { username: req.body.username },
       {
         $set: {
-          nombre: req.body.nombre,
-          apellido: req.body.apellido,
-          puesto: req.body.puesto,
-          departamento: req.body.departamento,
-          delegacion: req.body.delegacion,
-          fechaInicio: req.body.fechaInicio,
-          password: req.body.password,
+            nombre: req.body.nombre,
+            apellido: req.body.apellido,
+            delegacion: req.body.delegacion,
+            direccion: req.body.direccion,
+            puesto: req.body.puesto,
+            email: req.body.email,
+            departamento: req.body.departamento,
+            password: req.body.password,
         },
       },
       function (error, datos) {
         error
-          ? res.send({ error: true, contenido: error })
+          ? res.send({ error: true, contenido: error, mensaje: `Error, ${datos.deletedCount} registros eliminados` })
           : res.send({
               error: false,
-              mensaje: `Se ha eliminado ${datos.deletedCount} registro correctamente`,
+              mensaje: `Se ha eliminado ${datos.deletedCount} registro`,
               contenido: datos,
             });
       }

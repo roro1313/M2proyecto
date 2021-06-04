@@ -22,6 +22,12 @@ h3,
 h4 {
   font-family: "Baloo Tammudu 2";
 }
+
+h2,
+h3{
+  color: #d69c31;
+}
+
 main {
   padding-top: 3%;
   padding-bottom: 5%;
@@ -84,7 +90,7 @@ nav a:hover {
 }
 
 img {
-  height: 200px;
+  height: 300px;
   width: 150px;
 }
 
@@ -109,5 +115,116 @@ img {
 }
 
 em {
-  background-color: #F7EE39;
+  background-color: #f7ee39;
+}
+
+/* ------ Clases ------ */
+.centrado {
+  text-align: center;
+}
+
+/* ------ Botones e inputs ------ */
+
+button {
+  background-color: white;
+  color: black;
+  border: 2px solid #d6be31;
+  transition-duration: 0.2s;
+  padding: 1%;
+}
+
+button:hover {
+  background-color: #d6be31;
+  color: white;
+}
+
+input {
+  border: 2px solid #d6be31;
+  padding: 1%;
+}
+
+/* ------ Página de inicio ------ */
+
+#contenedorInicio {
+  text-align: center;
+  width: 100%;
+  margin-left: 0%;
+  margin-right: 0%;
+  margin-top: 0px;
+  padding: 20px;
+  background-image: url(https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg);
+  background-color: rgba(0, 0, 0, 0.9);
+  filter: brightness(0.6);
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#contenedorInicio h2 {
+  font-size: 50px;
+  font-weight: 300;
+  font-style: italic;
+  margin: 80px;
+  color: #fff;
+}
+
+/* ------ Footer ------ */
+
+footer {
+  margin-top: -25px;
+  background-color: #d6be31;
+}
+#contenedorFooter {
+  display: flex;
+  grid-template-columns: repeat(3);
+  column-gap: 5px;
+  margin: 2% 5% 2% 5%;
+}
+.contactoFooter {
+  width: 35%;
+}
+#copyright {
+  display: flex;
+  justify-content: space-between;
+  margin: 0px 50px 0px 50px;
+}
+
+/* ------ Servicios - inicio ------ */
+
+#contenedorServicios {
+  padding: 3% 0% 3% 0%;
+  display: flex;
+  justify-content: space-around;
+  grid-template-columns: fit-content(200px) fit-content(200px) 1fr;
+}
+.servicios {
+  width: 30%;
+  margin: 1%;
+  padding-left: 2%;
+  padding-right: 2%;
+  border-color: #edc242;
+  border-style: solid;
+  border-width: 3px;
+  border-radius: 15px;
+  text-align: center;
+}
+
+.servicio {
+  width: 30%;
+  margin: 1%;
+  padding-left: 2%;
+  padding-right: 2%;
+  border-radius: 15px;
+  text-align: center;
+}
+.servicio:hover {
+  background-color: #edc242;
+}
+
+.servicios h3 {
+  color: #edc242;
+  font-family: "Baloo Tammudu 2";
+  font-size: 30px;
+  text-indent: 3px;
+  text-align: center;
 }

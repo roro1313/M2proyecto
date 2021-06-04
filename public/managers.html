@@ -19,44 +19,120 @@
             <ul class="menu"><a href="/usuarios.html">Usuarios</a></ul>
             <ul class="menu"><a href="/managers.html">Managers</a></ul>
         </nav>
+        <div id="contenedorInicio">
+            <h2>Un nuevo canal de comunicación,<br> sin barreras</h2>
+        </div>
     </header>
     <main>
         <div>
             <h1> Zona managers </h1>
             <p>Estás en la zona de management del portal del empleado de PatataShop. A través de esta página puedes
-                gestionar los perfiles de los empleados:</p>
-            <p>Aquí puedes consultar los perfiles de los empleados, crear nuevos perfiles, editar los perfiles
+                gestionar los perfiles de los empleados: Aquí puedes consultar los perfiles de los empleados, crear nuevos perfiles, editar los perfiles
                 existentes o eliminarlos.</p>
-        </div>
-        <div>
-            <h2>Zona de búsquedas:</h2>
             <button onclick="mostrarUsuarios()">Mostrar todos los usuarios</button>
             <div id="feedbackbuscarBoton"></div>
+            <p>Recuerda que para crear un usuario es preciso haberle hecho la fotografía previamente, de este modo
+                podremos cotejar la información con su tarjeta de acceso a la delegación correspondiente. si ya has
+                realizado la fotografía y quieres registrar un nuevo usuario, pulsa <a href="#nuevo">aquí</a> para
+                iniciar el registro.</p>
+        </div>
+        <div>
+            <h2 class="centrado">Zona de búsquedas:</h2>
         </div>
         <div id="busquedas">
             <div id="buscarUsuario">
                 <h3>Puedes consultar los perfiles por usuario:</h3>
+                <p>Introduce un nombre de usuario para iniciar la búsqueda</p>
                 <input type="text" placeholder="Usuario" id="username">
                 <button onclick="buscarUsuario()">Buscar usuario</button>
                 <div id="feedbackbuscarUsuario"></div>
             </div>
             <div id="buscarDepartamento">
                 <h3>Puedes consultar los perfiles por departamento:</h3>
+                <p>Introduce un departamento para iniciar la búsqueda</p>
                 <input type="text" placeholder="Departamento" id="departamento">
                 <button onclick="buscarDepartamento()">Buscar departamento</button>
                 <div id="feedbackbuscarDepartamento"></div>
             </div>
             <div id="buscarDelegacion">
                 <h3>Puedes consultar los perfiles por delegación:</h3>
+                <p>Introduce una delegación para iniciar la búsqueda</p>
                 <input type="text" placeholder="Delegación" id="delegacion">
                 <button onclick="buscarDelegacion()">Buscar delegación</button>
                 <div id="feedbackbuscarDelegacion"></div>
             </div>
         </div>
         <div id="resultadosBusqueda"></div>
-        <div id="editar"></div>
-        <div id="borrar"></div>
+        <div id="nuevo">
+            <h3>Registra una nueva cuenta de usuario:</h3>
+            <p>Recuerda que el nombre de usuario debe seguir el siguiente patrón | nombreUsuario | y que, una vez
+                creado, no será modificable</p>
+            <input type="text" placeholder="Nombre" id="nombreN">
+            <input type="text" placeholder="Apellido" id="apellidoN">
+            <input type="text" placeholder="Puesto" id="puestoN">
+            <input type="text" placeholder="Departamento" id="departamentoN">
+            <input type="text" placeholder="Delegación" id="delegacionN">
+            <input type="text" placeholder="Dirección" id="direccionN">
+            <input type="text" placeholder="Email" id="emailN">
+            <input type="text" placeholder="URL foto" id="fotoN">
+            <input type="text" placeholder="username" id="usernameN">
+            <input type="password" placeholder="password" id="passwordN">
+            <button onclick="crearUsuario()">Registrar nuevo usuario</button>
+            <div id="feedbackNuevo"></div>
+        </div>
+        <div id="editar">
+            <h3>Editar usuario:</h3>
+            <p>Introduce un nombre de usuario para modificar toda la información que necesites.</p>
+            <input type="text" placeholder="Usuario" id="usernameE">
+            <input type="text" placeholder="Nombre" id="nombreE">
+            <input type="text" placeholder="Apellido" id="apellidoE">
+            <input type="text" placeholder="Puesto" id="puestoE">
+            <input type="text" placeholder="Departamento" id="departamentoE">
+            <input type="text" placeholder="Delegación" id="delegacionE">
+            <input type="text" placeholder="Dirección" id="direccionE">
+            <input type="text" placeholder="Email" id="emailE">
+            <button onclick="editarUsuario()">Editar usuario</button>
+            <div id="feedbackEditar"></div>
+        </div>
+        <div id="borrar">
+            <h3>Eliminar usuario:</h3>
+            <p>Introduce un nombre de usuario para eliminar toda su información almacenada</p>
+            <input type="text" placeholder="Usuario" id="usernameB">
+            <button onclick="borrarUsuario()">Borrar usuario</button>
+            <div id="feedbackBorrar"></div>
+        </div>
     </main>
+    <footer>
+        <div id="contenedorFooter">
+            <div class="contactoFooter">
+                <div>
+                    <p><strong>Sobre nosotros</strong></p>
+                </div>
+                <div>
+                    <p>Tel XXXXXXXXX<br>
+                        Tel XXXXXXXXX<br>
+                        Email <a href="#">managers@PatataShop.com</a></p>
+                </div>
+            </div>
+            <div class="contactoFooter">
+                <p><strong>Horario</strong></p>
+                <p>De lunes a viernes: 9 - 18h<br>
+                    Fines de semana: solo email</p>
+            </div>
+            <div class="contactoFooter">
+                <div>
+                    <p><strong>Contáctanos</strong></p>
+                </div>
+                <div>
+                    <p>¡Queremos hablar contigo! Utiliza los canales habituales de contacto.</p>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div id="copyright">
+            <p>Puedes ver mi trabajo en <a href="https://github.com/roro1313">GitHub</a></p>
+        </div>
+    </footer>
     <script src="managers.js"></script>
 </body>
 
